@@ -8,6 +8,7 @@ import { SummaryCards } from '@/components/dashboard/SummaryCards';
 import { SpendingChart } from '@/components/dashboard/SpendingChart';
 import { CategoryChart } from '@/components/dashboard/CategoryChart';
 import { RecentExpenses } from '@/components/dashboard/RecentExpenses';
+import { ExportButton } from '@/components/export/ExportButton';
 import { Modal } from '@/components/ui/Modal';
 import { ExpenseForm } from '@/components/expenses/ExpenseForm';
 import { Expense } from '@/types/expense';
@@ -42,8 +43,9 @@ export default function DashboardPage() {
       <Navigation />
 
       <main className="max-w-7xl mx-auto px-4 py-8">
-        <div className="mb-6">
+        <div className="flex justify-between items-center mb-6">
           <h2 className="text-3xl font-bold text-gray-900">Dashboard</h2>
+          <ExportButton expenses={expenses} />
         </div>
 
         <div className="space-y-6">
