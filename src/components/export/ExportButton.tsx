@@ -1,33 +1,47 @@
-import React from 'react';
+'use client';
+
+import { useState } from 'react';
 import { Expense } from '@/types/expense';
-import { exportToCSV } from '@/lib/export';
 import { Button } from '@/components/ui/Button';
+import { ExportHub } from './ExportHub';
 
 interface ExportButtonProps {
   expenses: Expense[];
 }
 
 export function ExportButton({ expenses }: ExportButtonProps) {
-  const handleExport = () => {
-    exportToCSV(expenses);
-  };
+  const [isHubOpen, setIsHubOpen] = useState(false);
 
   return (
-    <Button variant="secondary" onClick={handleExport} disabled={expenses.length === 0}>
-      <svg
-        className="w-4 h-4 mr-2 inline"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
+    <>
+      <Button
+        variant="primary"
+        onClick={() => setIsHubOpen(true)}
+        disabled={expenses.length === 0}
+        className="relative"
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-        />
-      </svg>
-      Export to CSV
-    </Button>
+        <svg
+          className="w-4 h-4 mr-2 inline"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+          />
+        </svg>
+        Export Hub
+        <span className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+      </Button>
+
+      <ExportHub
+        isOpen={isHubOpen}
+        onClose={() => setIsHubOpen(false)}
+        expenses={expenses}
+      />
+    </>
   );
 }
