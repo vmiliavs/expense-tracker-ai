@@ -1,6 +1,6 @@
 # Code Generation Prompts
 
-This document contains the original prompts used to generate the different implementations of the export feature, as well as the prompt used to generate the comprehensive code analysis.
+This document contains all prompts used to generate the expense tracker application and its various implementations. It includes the original application prompt, the three different export feature implementations, and the comprehensive code analysis generation prompt.
 
 ---
 
@@ -16,17 +16,91 @@ This document contains the original prompts used to generate the different imple
 
 ## Original Implementation (Master Branch)
 
-### Context
+### Initial Commit: `edafb78 - Initial expense tracker implementation`
 
-The original expense tracker implementation included export functionality as part of the initial commit. This was not generated from a specific prompt during this session - it was part of the baseline application.
+### Original Prompt
 
-**Initial Commit:** `edafb78 - Initial expense tracker implementation`
+```
+I want you to create a modern, professional NextJS expense tracking application. Here's my vision:
+
+APPLICATION OVERVIEW:
+Build a complete expense tracking web app that helps users manage their personal finances. The app should feel modern, intuitive, and professional.
+
+CORE FEATURES:
+- Add expenses with date, amount, category, and description
+- View expenses in a clean, organized list
+- Filter expenses by date range and category
+- Dashboard with spending summaries and basic analytics
+- Categories: Food, Transportation, Entertainment, Shopping, Bills, Other
+- Data persistence using localStorage for this demo
+
+TECHNICAL REQUIREMENTS:
+- NextJS 14 with App Router
+- TypeScript for type safety
+- Tailwind CSS for styling with a modern, clean design
+- Responsive design that works on desktop and mobile
+- Use React hooks for state management
+- Form validation for expense inputs
+- Date picker for expense dates
+- Currency formatting for amounts
+
+DESIGN REQUIREMENTS:
+- Clean, modern interface with a professional color scheme
+- Intuitive navigation and user experience
+- Visual feedback for user actions
+- Loading states and error handling
+- Mobile-responsive design
+
+SPECIFIC FUNCTIONALITY:
+- Expense form with validation
+- Expense list with search and filter capabilities
+- Summary cards showing total spending, monthly spending, top categories
+- Basic charts or visual representations of spending patterns
+- Export functionality (at least CSV)
+- Delete and edit existing expenses
+
+Please create this as a complete, production-ready application. Set up the project structure, implement all features, and make sure everything works together seamlessly. Focus on creating something that looks professional and that I could actually use to track my expenses.
+
+When you're done, provide instructions on how to run the application and test all features.
+```
+
+### Implementation Result
+
+The prompt resulted in a complete, production-ready expense tracker application with the following characteristics:
+
+**Core Application Structure:**
+- NextJS 14 with App Router and TypeScript
+- Component-based architecture
+- Custom UI component library
+- localStorage-based data persistence
+- Responsive design with Tailwind CSS
+
+**Key Features Implemented:**
+- Full expense CRUD operations (Create, Read, Update, Delete)
+- Category-based expense organization
+- Date range filtering
+- Real-time expense statistics and summaries
+- Visual spending analytics with charts (using Recharts)
+- CSV export functionality
+- Form validation and error handling
+- Mobile-responsive design
 
 **Files Included:**
-- `src/lib/export.ts`
-- `src/components/export/ExportButton.tsx`
+- Complete NextJS application structure
+- UI components (Button, Input, Modal, Card, etc.)
+- Expense management components
+- Data export functionality (`src/lib/export.ts`, `src/components/export/ExportButton.tsx`)
+- Analytics and visualization components
+- Type definitions and utilities
 
-The original implementation provided basic CSV export functionality that was later removed and reimplemented in three different ways.
+**Technology Stack:**
+- Next.js 14.2.35
+- React 18
+- TypeScript 5
+- Tailwind CSS 3.4.1
+- Recharts 3.7.0 (for data visualization)
+
+This baseline implementation provided CSV export functionality that was later removed and reimplemented in three completely different architectural approaches (V1, V2, V3).
 
 ---
 
@@ -313,9 +387,20 @@ The generated analysis included:
 
 ## Prompt Engineering Insights
 
+### Baseline Application
+
+The original expense tracker was generated with a comprehensive prompt that specified:
+- Complete feature set and user experience expectations
+- Technical stack requirements (NextJS 14, TypeScript, Tailwind)
+- Design standards (modern, professional, responsive)
+- Specific functionality requirements (CRUD, filtering, analytics, export)
+- Quality expectations ("production-ready", "actually usable")
+
+This established a solid foundation with export functionality included, which was then reimplemented three different ways for comparison.
+
 ### Progression Strategy
 
-The prompts were designed to explore fundamentally different architectural approaches:
+After establishing the baseline, the export feature prompts were designed to explore fundamentally different architectural approaches:
 
 **V1 → Minimalism**
 - Focus: Simplicity, speed to market
@@ -372,6 +457,12 @@ The code analysis prompt successfully generated comprehensive technical document
 ---
 
 ## Reproducibility
+
+### To Recreate the Original Application:
+1. Start with a blank NextJS project
+2. Use the original application prompt above
+3. Emphasize production-ready quality and completeness
+4. Expected result: Full expense tracker with CRUD, analytics, filtering, and CSV export
 
 ### To Recreate Version 1:
 1. Start with clean expense tracker application
