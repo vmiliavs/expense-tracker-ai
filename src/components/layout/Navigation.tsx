@@ -8,6 +8,7 @@ export function Navigation() {
 
   const links = [
     { href: '/', label: 'Dashboard' },
+    { href: '/analytics', label: 'Analytics' },
     { href: '/expenses', label: 'Expenses' },
   ];
 
